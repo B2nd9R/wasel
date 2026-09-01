@@ -1,0 +1,38 @@
+{
+  "idea": "Wasel \u0648\u0627\u0635\u0644",
+  "tagline": "AI-powered pothole detection and road repair dispatch for Saudi Arabia",
+  "team_name": "Wasel",
+  "members": [
+    { "name": "Mohan", "org": "Independent" }
+  ],
+  "beneficiary": "Ahmed, a daily commuter in Riyadh who drives over the same dangerous pothole every morning. He does not know who to call, the municipality form takes 20 minutes, and he never hears back.",
+  "claim": "Wasel cuts the time to detect, confirm, and escalate a pothole report from weeks of silence to under 60 seconds \u2014 with a tracked repair priority, SLA deadline, and instant alert to the construction company.",
+  "what_it_does": [
+    "Detects potholes automatically via phone motion sensor (DeviceMotion API) or manual photo upload",
+    "Uses Claude vision AI to confirm the damage is real and assess severity (critical/high/medium/low)",
+    "Scans for nearby reports within 1 km and calculates a priority score (0\u2013100) with an SLA",
+    "Files the report to DynamoDB with GPS coordinates and uploads the photo to S3",
+    "Alerts the nearest construction company via SNS with location, priority, and Google Maps link"
+  ],
+  "architecture_note": "Strands Agent on AgentCore Runtime \u2192 5 tools (vision, report, nearby scan, priority, SNS alert) \u2192 DynamoDB + S3 + Bedrock Knowledge Base. AgentCore Memory for cross-session user preferences. Bilingual EN/AR web UI.",
+  "arch_image": "",
+  "demo_steps": [
+    "Driver hits a bump \u2014 taps Yes on the Wasel motion popup",
+    "Uploads a pothole photo \u2014 Claude vision confirms High severity damage",
+    "Agent finds 3 nearby reports in the same 1 km cluster",
+    "Priority score: 75/100 \u2014 Fix This Week \u2014 7-day SLA assigned",
+    "SNS alert fires to construction company with GPS + Google Maps link"
+  ],
+  "impact": [
+    "Customer impact: Ahmed gets a report ID and fix date in under 60 seconds instead of weeks of silence",
+    "Agentic depth: one photo triggers 5 autonomous tool calls with zero human steps",
+    "Regional relevance: bilingual Arabic/English UI, RTL layout, Saudi road context"
+  ],
+  "next_steps": [
+    "Real phone app with live DeviceMotion detection (no manual button needed)",
+    "Satellite/aerial image cross-validation via Amazon Location Service",
+    "Municipality dashboard showing repair queue ranked by priority score",
+    "Push notifications to residents when their reported pothole is fixed",
+    "Predictive model to flag roads likely to fail before potholes form"
+  ]
+}

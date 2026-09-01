@@ -1,0 +1,1 @@
+# No extra dependencies — handler uses only the stdlib and boto3 (pre-installed in Lambda)

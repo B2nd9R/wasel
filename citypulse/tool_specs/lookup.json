@@ -1,0 +1,17 @@
+[
+  {
+    "name": "lookup_item",
+    "description": "Look up a short description for a city issue category by its id. Returns the department and handling note for the issue type.",
+    "inputSchema": {
+      "type": "object",
+      "description": "Input for the lookup_item tool",
+      "properties": {
+        "item_id": {
+          "type": "string",
+          "description": "The issue category id to look up, e.g. 'pothole', 'graffiti', 'streetlight'."
+        }
+      },
+      "required": ["item_id"]
+    }
+  }
+]
