@@ -1,0 +1,7 @@
+# Secrets — never commit these
+cognito_config.json
+agentcore/.env.local
+*.env
+__pycache__/
+*.pyc
+lambda_functions/lookup.zip
